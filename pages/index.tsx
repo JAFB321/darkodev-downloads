@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { Header } from '../components/common/Header'
-import { DownloadCard } from '../components/DownloadCard';
+import { DownloadCard } from '../components/downloads/DownloadCard';
 
 export default function Home() {
 
