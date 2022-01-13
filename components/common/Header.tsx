@@ -7,14 +7,21 @@ interface HeaderData {
 
 export const Header = ({title} : HeaderData) => {
     return (
-        <header className=" py-5 w-100">
-            <div className="flex w-10/12 max-w-5xl m-auto">
-                <Link href={'/'}>
-                    <a className="text-white p-3 inline-block rounded bg-gray-700">
+        <header className=" pb-10 w-100">
+            <div className="flex justify-between  m-auto">
+                <Link href={'/'} >
+                    <a className="text-white text-center font-extrabold p-3 inline-block rounded flex-1 bg-gray-900">
                         {title}
                     </a>
                 </Link>
-                <nav></nav>
+
+                <nav>
+                    {/* <Link href={'/'}>
+                        <a className="text-white p-3 inline-block rounded bg-gray-700">
+                            {title}
+                        </a>
+                    </Link> */}
+                </nav>
             </div>
         </header>
     )
