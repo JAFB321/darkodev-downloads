@@ -19,10 +19,7 @@ const DownloadPage = () => {
 
     return (
         <Layout>
-            <DownloadCard url={url} content={content} title={title} />
-            <DownloadCard url={url} content={content} title={title} />
-            <DownloadCard url={url} content={content} title={title} />
-            
+            <DownloadCard url={url} content={content} title={title} />            
         </Layout>
     )
 }
