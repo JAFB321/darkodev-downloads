@@ -1,14 +1,36 @@
 import React from 'react'
-import { useRouter } from 'next/router'
-import { DownloadCard } from '../../components/downloads/DownloadCard';
+import { GetStaticPaths, GetStaticProps } from 'next';
+
 import Layout from '../../components/common/Layout';
+import { DownloadCard } from '../../components/downloads/DownloadCard';
 
-const DownloadPage = () => {
 
-    const router = useRouter();
+export const getStaticPaths: GetStaticPaths = async () => {
+    return {
+        paths: [],
+        fallback: true
+    };
+}
 
-    const {id} = router.query;
+export const getStaticProps: GetStaticProps = async (context) => {
+
+    console.log(context.params);
     
+
+    return {
+        props: {
+            id: '10'
+        }
+    };
+}
+
+
+interface DownloadPageProps {
+    id: string
+}
+
+const DownloadPage = ({id}: DownloadPageProps) => {
+  
     const data = {
 		title: 'Descargar Filmora X',
 		content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis quasi voluptates laudantium accusamus temporibus aliquam rem dolore earum similique, vero facere delectus cumque consequuntur at ad eligendi! Quis, sint velit!',
@@ -17,9 +39,11 @@ const DownloadPage = () => {
 
 	const {content, title, url} = data;
 
+
     return (
         <Layout>
-            <DownloadCard url={url} content={content} title={title} />            
+            <p className='text-white'>{id}</p>
+            <DownloadCard url={url} content={content} title={title} />
         </Layout>
     )
 }
