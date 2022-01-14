@@ -1,17 +1,14 @@
 import Link from 'next/link'
 import React from 'react'
 
-interface HeaderData {
-    title: string
-}
 
-export const Header = ({title} : HeaderData) => {
+export const Header = () => {
     return (
         <header className=" pb-10 w-100">
-            <div className="flex justify-between  m-auto">
+            <div className="flex justify-center m-auto bg-gray-900">
                 <Link href={'/'} >
-                    <a className="text-white text-center font-extrabold p-3 inline-block rounded flex-1 bg-gray-900">
-                        {title}
+                    <a className="text-white text-center font-extrabold p-3 inline-block rounded ">
+                        Darko Dev
                     </a>
                 </Link>
 
