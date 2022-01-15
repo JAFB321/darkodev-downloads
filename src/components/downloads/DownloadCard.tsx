@@ -1,16 +1,27 @@
-interface IDownload {
-	title: string,
-	content?: string,
-	url: string,
-	shorten_url?: string,
-	shorten_ads_url?: string,
-	image?: string,
-	delay?: number,
-	
+import DownloadPost from "../../types/DownloadPost";
+
+interface DownloadCardProps {
+	downloadPost: DownloadPost
 }
 
-export const DownloadCard = ({title, content, url, shorten_url, shorten_ads_url, image, delay}: IDownload) => {
-    return (
+export const DownloadCard = ({downloadPost}: DownloadCardProps) => {
+    
+	const { 
+		id,
+		title, 
+		url, 
+		content, 
+		delay_time, 
+		images, 
+		shortened_ads_url, 
+		shortened_url, 
+		shortened_url_button, 
+		shortened_ads_button, 
+		url_button 
+	} = downloadPost;
+	
+	
+	return (
 			<article className="px-5 py-5 bg-white w-9/12 max-w-3xl min rounded-sm">
 				
 				<h1 className=" text-xl font-bold text-center">{title}</h1>
