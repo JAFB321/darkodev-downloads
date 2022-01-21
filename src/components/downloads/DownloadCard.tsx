@@ -1,3 +1,4 @@
+import Image from "next/image";
 import DownloadPost from "../../types/DownloadPost";
 
 interface DownloadCardProps {
@@ -8,16 +9,18 @@ export const DownloadCard = ({downloadPost}: DownloadCardProps) => {
     
 	const { 
 		id,
-		title, 
-		url, 
-		content, 
-		delay_time, 
-		images, 
-		shortened_ads_url, 
-		shortened_url, 
-		shortened_url_button, 
-		shortened_ads_button, 
-		url_button 
+		attributes: {
+			shortened_ads_button,
+			shortened_url_button,
+			title,
+			url,
+			url_button,
+			content,
+			delay_time,
+			images,
+			shortened_ads_url,
+			shortened_url
+		}
 	} = downloadPost;
 	
 	

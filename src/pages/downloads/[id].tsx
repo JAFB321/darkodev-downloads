@@ -3,6 +3,8 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import Layout from '../../components/common/Layout';
 import { DownloadCard } from '../../components/downloads/DownloadCard';
 
+import DownloadPost from '../../types/DownloadPost'
+import {getAll} from '../../api/DownloadPost/endpoint';
 
 export const getStaticPaths: GetStaticPaths = async () => {
     return {
@@ -13,36 +15,33 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
 
-    console.log(context.params);
-    
+    const downloadPosts = await getAll();
 
     return {
         props: {
-            id: '10'
+            id: '10',
+            downloadPosts: downloadPosts || null
         }
     };
 }
 
 
 interface DownloadPageProps {
-    id: string
+    id: string,
+    downloadPosts: DownloadPost[] | null
 }
 
-const DownloadPage = ({id}: DownloadPageProps) => {
-  
-    const data = {
-		title: 'Descargar Filmora X',
-		content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis quasi voluptates laudantium accusamus temporibus aliquam rem dolore earum similique, vero facere delectus cumque consequuntur at ad eligendi! Quis, sint velit!',
-		url: 'https://www.google.com'
-	}
-
-	const {content, title, url} = data;
-
+const DownloadPage = ({id, downloadPosts}: DownloadPageProps) => {  
 
     return (
         <Layout>
             <p className='text-white'>{id}</p>
-            <DownloadCard url={url} content={content} title={title} />
+
+            {downloadPosts?.map((post) => 
+                    <DownloadCard downloadPost={post} key={id} />
+                )
+            }
+
         </Layout>
     )
 }
